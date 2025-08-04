@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Registrations</title>
+</head>
+<body>
+    <h1>My Event Registrations</h1>
+    <ul>
+        {% for registration in registrations %}
+            <li>
+                {{ registration.event.title }} - {{ registration.event.date }}
+                <form method="post" action="{% url 'cancel_registration' registration.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Cancel</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>You have no registrations.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">Back to events list</a>
+</body>
+</html>

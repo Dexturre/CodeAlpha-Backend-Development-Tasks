@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cancel Registration</title>
+</head>
+<body>
+    <h1>Cancel Registration</h1>
+    <p>Are you sure you want to cancel your registration for "{{ registration.event.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Cancel</button>
+        <a href="{% url 'my_registrations' %}">No, Go Back</a>
+    </form>
+</body>
+</html>
